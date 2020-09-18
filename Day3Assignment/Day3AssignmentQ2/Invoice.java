@@ -1,0 +1,72 @@
+package Day3AssignmentQ2;
+
+import java.math.BigDecimal;
+
+public class Invoice implements Payable{
+
+	private String partNum;
+	private String partDescription;
+	private BigDecimal quantity;
+	private BigDecimal pricePerItem;
+
+	public Invoice(String partNum, String partDescription, BigDecimal quantity, BigDecimal pricePerItem) {
+		this.partNum = partNum;
+		this.partDescription = partDescription;
+		this.quantity = quantity;
+		this.pricePerItem = pricePerItem;
+	}
+
+	public String getPartNum() {
+		return partNum;
+	}
+
+	public void setPartNum(String partNum) {
+		this.partNum = partNum;
+	}
+
+	public String getPartDescription() {
+		return partDescription;
+	}
+
+	public void setPartDescription(String partDescription) {
+		this.partDescription = partDescription;
+	}
+
+	public BigDecimal getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(BigDecimal quantity) {
+		this.quantity = quantity;
+	}
+
+	public BigDecimal getPricePerItem() {
+		return pricePerItem;
+	}
+
+	public void setPricePerItem(BigDecimal pricePerItem) {
+		this.pricePerItem = pricePerItem;
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Invoice [partNum=");
+		builder.append(partNum);
+		builder.append(", partDescription=");
+		builder.append(partDescription);
+		builder.append(", quantity=");
+		builder.append(quantity);
+		builder.append(", pricePerItem=");
+		builder.append(pricePerItem);
+		builder.append("]");
+		return builder.toString();
+	}
+
+	@Override
+	public BigDecimal getPayment() {
+		BigDecimal payment = this.getPricePerItem().multiply(this.getQuantity());
+		System.out.println("Total payment" + payment);
+		return payment;
+	}
+}
